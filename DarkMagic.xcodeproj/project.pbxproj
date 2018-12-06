@@ -20,13 +20,25 @@
 		D284B1461F7908B300D94AF3 /* SharedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D284B1321F7906DA00D94AF3 /* SharedTests.swift */; };
 		D284B1471F7908B800D94AF3 /* iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D284B1361F7906DA00D94AF3 /* iOSTests.swift */; };
 		D284B1481F7908BB00D94AF3 /* macOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D284B12E1F7906DA00D94AF3 /* macOSTests.swift */; };
-		D284B1491F790CA200D94AF3 /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C629861C3A89A8007F7B7C /* Shared.swift */; };
-		D284B14A1F790CA200D94AF3 /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C629861C3A89A8007F7B7C /* Shared.swift */; };
 		D5B2E8AA1C3A780C00C0327D /* DarkMagic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B2E89F1C3A780C00C0327D /* DarkMagic.framework */; };
 		D5C6294A1C3A7FAA007F7B7C /* DarkMagic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C629401C3A7FAA007F7B7C /* DarkMagic.framework */; };
 		D5C629831C3A892A007F7B7C /* iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C629821C3A892A007F7B7C /* iOS.swift */; };
-		D5C629871C3A89A8007F7B7C /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C629861C3A89A8007F7B7C /* Shared.swift */; };
-		D5C629881C3A89A8007F7B7C /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C629861C3A89A8007F7B7C /* Shared.swift */; };
+		E453A4AB21B9B63400B5F714 /* AssociatedObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = E453A4A721B9B63400B5F714 /* AssociatedObjects.swift */; };
+		E453A4AC21B9B63400B5F714 /* AssociatedObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = E453A4A721B9B63400B5F714 /* AssociatedObjects.swift */; };
+		E453A4AD21B9B63400B5F714 /* AssociatedObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = E453A4A721B9B63400B5F714 /* AssociatedObjects.swift */; };
+		E453A4AE21B9B63400B5F714 /* AssociatedObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = E453A4A721B9B63400B5F714 /* AssociatedObjects.swift */; };
+		E453A4AF21B9B63400B5F714 /* Swizzler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E453A4A821B9B63400B5F714 /* Swizzler.swift */; };
+		E453A4B021B9B63400B5F714 /* Swizzler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E453A4A821B9B63400B5F714 /* Swizzler.swift */; };
+		E453A4B121B9B63400B5F714 /* Swizzler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E453A4A821B9B63400B5F714 /* Swizzler.swift */; };
+		E453A4B221B9B63400B5F714 /* Swizzler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E453A4A821B9B63400B5F714 /* Swizzler.swift */; };
+		E453A4B321B9B63400B5F714 /* KVObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E453A4A921B9B63400B5F714 /* KVObserver.swift */; };
+		E453A4B421B9B63400B5F714 /* KVObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E453A4A921B9B63400B5F714 /* KVObserver.swift */; };
+		E453A4B521B9B63400B5F714 /* KVObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E453A4A921B9B63400B5F714 /* KVObserver.swift */; };
+		E453A4B621B9B63400B5F714 /* KVObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E453A4A921B9B63400B5F714 /* KVObserver.swift */; };
+		E453A4BC21B9B8CA00B5F714 /* DarkMagicError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E453A4BB21B9B8CA00B5F714 /* DarkMagicError.swift */; };
+		E453A4BD21B9B8CA00B5F714 /* DarkMagicError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E453A4BB21B9B8CA00B5F714 /* DarkMagicError.swift */; };
+		E453A4BE21B9B8CA00B5F714 /* DarkMagicError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E453A4BB21B9B8CA00B5F714 /* DarkMagicError.swift */; };
+		E453A4BF21B9B8CA00B5F714 /* DarkMagicError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E453A4BB21B9B8CA00B5F714 /* DarkMagicError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,7 +90,16 @@
 		D5C629401C3A7FAA007F7B7C /* DarkMagic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DarkMagic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5C629491C3A7FAA007F7B7C /* DarkMagic-macOS-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DarkMagic-macOS-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5C629821C3A892A007F7B7C /* iOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iOS.swift; sourceTree = "<group>"; };
-		D5C629861C3A89A8007F7B7C /* Shared.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shared.swift; sourceTree = "<group>"; };
+		E453A4A721B9B63400B5F714 /* AssociatedObjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssociatedObjects.swift; sourceTree = "<group>"; };
+		E453A4A821B9B63400B5F714 /* Swizzler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Swizzler.swift; sourceTree = "<group>"; };
+		E453A4A921B9B63400B5F714 /* KVObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KVObserver.swift; sourceTree = "<group>"; };
+		E453A4BB21B9B8CA00B5F714 /* DarkMagicError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkMagicError.swift; sourceTree = "<group>"; };
+		E453A4C021B9BB6000B5F714 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		E453A4C121B9BB6000B5F714 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		E453A4C221B9BB6000B5F714 /* CONTRIBUTING.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CONTRIBUTING.md; sourceTree = "<group>"; };
+		E453A4C321B9BB6000B5F714 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		E453A4C421B9BB6100B5F714 /* circle.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = circle.yml; sourceTree = "<group>"; };
+		E453A4C521B9BB6100B5F714 /* DarkMagic.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = DarkMagic.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +228,12 @@
 		D5B2E8951C3A780C00C0327D = {
 			isa = PBXGroup;
 			children = (
+				E453A4C121B9BB6000B5F714 /* Cartfile */,
+				E453A4C421B9BB6100B5F714 /* circle.yml */,
+				E453A4C221B9BB6000B5F714 /* CONTRIBUTING.md */,
+				E453A4C521B9BB6100B5F714 /* DarkMagic.podspec */,
+				E453A4C321B9BB6000B5F714 /* Package.swift */,
+				E453A4C021B9BB6000B5F714 /* README.md */,
 				D500FD111C3AABED00782D78 /* Playground-iOS.playground */,
 				D500FD121C3AAC8E00782D78 /* Playground-macOS.playground */,
 				D284B13F1F79081F00D94AF3 /* Info */,
@@ -253,7 +280,10 @@
 		D5C6296E1C3A809D007F7B7C /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				D5C629861C3A89A8007F7B7C /* Shared.swift */,
+				E453A4A721B9B63400B5F714 /* AssociatedObjects.swift */,
+				E453A4A921B9B63400B5F714 /* KVObserver.swift */,
+				E453A4A821B9B63400B5F714 /* Swizzler.swift */,
+				E453A4BB21B9B8CA00B5F714 /* DarkMagicError.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -439,7 +469,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Brian Strobach";
 				TargetAttributes = {
 					D284B0FB1F79038B00D94AF3 = {
@@ -467,6 +497,7 @@
 					};
 					D5C6293F1C3A7FAA007F7B7C = {
 						CreatedOnToolsVersion = 7.2;
+						LastSwiftMigration = 1010;
 					};
 					D5C629481C3A7FAA007F7B7C = {
 						CreatedOnToolsVersion = 7.2;
@@ -556,8 +587,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D284B1491F790CA200D94AF3 /* Shared.swift in Sources */,
+				E453A4B521B9B63400B5F714 /* KVObserver.swift in Sources */,
+				E453A4AD21B9B63400B5F714 /* AssociatedObjects.swift in Sources */,
 				D284B1231F79041C00D94AF3 /* tvOS.swift in Sources */,
+				E453A4BE21B9B8CA00B5F714 /* DarkMagicError.swift in Sources */,
+				E453A4B121B9B63400B5F714 /* Swizzler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -574,8 +608,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D284B14A1F790CA200D94AF3 /* Shared.swift in Sources */,
+				E453A4B621B9B63400B5F714 /* KVObserver.swift in Sources */,
+				E453A4AE21B9B63400B5F714 /* AssociatedObjects.swift in Sources */,
 				D284B1251F79042800D94AF3 /* watchOS.swift in Sources */,
+				E453A4BF21B9B8CA00B5F714 /* DarkMagicError.swift in Sources */,
+				E453A4B221B9B63400B5F714 /* Swizzler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,8 +620,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E453A4B321B9B63400B5F714 /* KVObserver.swift in Sources */,
+				E453A4AB21B9B63400B5F714 /* AssociatedObjects.swift in Sources */,
 				D5C629831C3A892A007F7B7C /* iOS.swift in Sources */,
-				D5C629871C3A89A8007F7B7C /* Shared.swift in Sources */,
+				E453A4BC21B9B8CA00B5F714 /* DarkMagicError.swift in Sources */,
+				E453A4AF21B9B63400B5F714 /* Swizzler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -601,8 +641,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5C629881C3A89A8007F7B7C /* Shared.swift in Sources */,
+				E453A4B421B9B63400B5F714 /* KVObserver.swift in Sources */,
+				E453A4AC21B9B63400B5F714 /* AssociatedObjects.swift in Sources */,
 				D284B0F61F79024300D94AF3 /* macOS.swift in Sources */,
+				E453A4BD21B9B8CA00B5F714 /* DarkMagicError.swift in Sources */,
+				E453A4B021B9B63400B5F714 /* Swizzler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -661,7 +704,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 11.0;
 			};
@@ -690,7 +733,7 @@
 				PRODUCT_NAME = DarkMagic;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 11.0;
 			};
@@ -715,7 +758,7 @@
 				SDKROOT = appletvos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 11.0;
 			};
@@ -738,7 +781,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "no.hyper.DarkMagic-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 11.0;
 			};
@@ -770,7 +813,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
@@ -800,7 +843,7 @@
 				PRODUCT_NAME = DarkMagic;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
@@ -818,12 +861,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -856,7 +901,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -875,12 +920,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -906,7 +953,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -931,7 +978,7 @@
 				PRODUCT_NAME = DarkMagic;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -951,7 +998,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "io.appsaurus.DarkMagic.demo.DarkMagic-iOS";
 				PRODUCT_NAME = DarkMagic;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -968,7 +1015,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = no.hyper.DarkMagicTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -984,7 +1031,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(FRAMEWORK_SEARCH_PATHS)";
 				PRODUCT_BUNDLE_IDENTIFIER = no.hyper.DarkMagicTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -1008,6 +1055,7 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -1030,6 +1078,7 @@
 				PRODUCT_NAME = DarkMagic;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -1048,6 +1097,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "no.hyper.DarkMagic-MacTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -1066,6 +1116,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "no.hyper.DarkMagic-MacTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
