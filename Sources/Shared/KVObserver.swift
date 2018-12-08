@@ -15,10 +15,10 @@ private extension AssociatedObjectKeys{
 extension KVObserver where Self: NSObject{
 	public var observations: Set<NSKeyValueObservation>{
 		get{
-			return getAssociatedObject(forKey: .observations, initialValue: Set<NSKeyValueObservation>())
+			return getAssociatedObject(for: .observations, initialValue: Set<NSKeyValueObservation>())
 		}
 		set{
-			setAssociatedObject(newValue, forKey: .observations)
+			setAssociatedObject(newValue, for: .observations)
 		}
 	}
 

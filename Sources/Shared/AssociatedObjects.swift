@@ -7,115 +7,230 @@
 
 import Foundation
 
-//Based on https://github.com/lukaskollmer/RuntimeKit/blob/master/RuntimeKit/Sources/AssociatedObject.swift
-
+public enum AssociatedObjectPolicy: UInt{
+    /**< Specifies a weak reference to the associated object. */
+    //AKA OBJC_ASSOCIATION_ASSIGN
+    case weak
+    
+    /**< Specifies a strong reference to the associated object.
+     *   The association is not made atomically. */
+    //AKA OBJC_ASSOCIATION_RETAIN_NONATOMIC
+    case strong
+    
+    /**< Specifies that the associated object is copied.
+     *   The association is not made atomically. */
+    //AKA OBJC_ASSOCIATION_COPY_NONATOMIC
+    case copy
+    
+    /**< Specifies a strong reference to the associated object.
+     *   The association is made atomically. */
+    //AKA OBJC_ASSOCIATION_RETAIN
+    case strongAtomic
+    
+    /**< Specifies that the associated object is copied.
+     *   The association is made atomically. */
+    //AKA OBJC_ASSOCIATION_COPY
+    case copyAtomic
+    
+    public var objc: objc_AssociationPolicy{
+        switch self{
+            
+        case .weak:
+            return .OBJC_ASSOCIATION_ASSIGN
+        case .strong:
+            return .OBJC_ASSOCIATION_RETAIN_NONATOMIC
+        case .copy:
+            return .OBJC_ASSOCIATION_COPY_NONATOMIC
+        case .strongAtomic:
+            return .OBJC_ASSOCIATION_RETAIN
+        case .copyAtomic:
+            return .OBJC_ASSOCIATION_COPY
+        }
+    }
+}
 public class AssociatedObjectKeys{
-	fileprivate let value: [CChar]
-	fileprivate let policy: objc_AssociationPolicy
-	public init(_ key: String, policy: objc_AssociationPolicy = .OBJC_ASSOCIATION_RETAIN_NONATOMIC) {
-		self.value = key.cString(using: .utf8)!
-		self.policy = policy
-	}
+    public let value: [CChar]
+    public let policy: AssociatedObjectPolicy
+    public init(_ key: String, policy: AssociatedObjectPolicy = .strong) {
+        self.value = key.cString(using: .utf8)!
+        self.policy = policy
+    }
 }
 
 public class AssociatedObjectKey<T>: AssociatedObjectKeys{}
 public class AssociatedOptionalObjectKey<T>: AssociatedObjectKeys {}
 
 public extension NSObject {
-
-	//MARK: Required values
-
-	/// Sets an associated value for a given object using a given key and association policy.
-	///
-	/// - Parameters:
-	///   - value: The value to associate with the key for object.
-	///   - key: The key for the association
-	///   - policy: The policy for the association. Default value is OBJC_ASSOCIATION_RETAIN_NONATOMIC
-	public func setAssociatedObject<T>(_ value: T, forKey key: AssociatedObjectKey<T>) {
-		objc_setAssociatedObject(self, key.value, value, key.policy)
-	}
-
-	/// Returns the value associated with a given object for a given key.
-	///
-	/// - Parameter key: The key for the association
-	/// - Returns: The value associated with the key `key` for the object.
-	public func getAssociatedObject<T>(forKey key: AssociatedObjectKey<T>, initialValue: @autoclosure () -> T) -> T {
-		var currentObj = objc_getAssociatedObject(self, key.value) as? T
-		if currentObj == nil{
-			setAssociatedObject(initialValue(), forKey: key)
-			currentObj = objc_getAssociatedObject(self, key.value) as? T
-		}
-		return currentObj!
-	}
-
-	public subscript <T>(key: AssociatedObjectKey<T>, initialValue: @autoclosure () -> T) -> T {
-		get {
-			return self.getAssociatedObject(forKey: key, initialValue: initialValue)
-		}
-		set {
-			self.setAssociatedObject(newValue, forKey: key)
-		}
-	}
-
-	//MARK: Optionals
-
-	/// Sets an associated value for a given object using a given key and association policy.
-	///
-	/// - Parameters:
-	///   - value: The value to associate with the key for object. Pass `nil` to clear an existing association.
-	///   - key: The key for the association
-	///   - policy: The policy for the association. Default value is OBJC_ASSOCIATION_RETAIN_NONATOMIC
-	public func setAssociatedObject<T>(_ value: T?, forKey key: AssociatedOptionalObjectKey<T>) {
-		objc_setAssociatedObject(self, key.value, value, key.policy)
-	}
-
-	/// Returns the value associated with a given object for a given key.
-	///
-	/// - Parameter key: The key for the association
-	/// - Returns: The value associated with the key `key` for the object.
-	public func getAssociatedObject<T>(forKey key: AssociatedOptionalObjectKey<T>, initialValue: (() -> T?)? = nil) -> T? {
-		var currentObj = objc_getAssociatedObject(self, key.value) as? T
-		if let initializer = initialValue, currentObj == nil{
-			setAssociatedObject(initializer(), forKey: key)
-			currentObj = objc_getAssociatedObject(self, key.value) as? T
-		}
-		return currentObj
-	}
-
-	/// Remove an associated valye for a given object
-	///
-	/// - Parameter key: The key for the association
-	/// - Returns: The old value associated with the key `key` for the object.
-	@discardableResult
-	public func removeAssociatedObject<T>(forKey key: AssociatedOptionalObjectKey<T>) -> T? {
-		let value = self.getAssociatedObject(forKey: key)
-
-		self.setAssociatedObject(nil, forKey: key)
-
-		return value
-	}
-
-	public subscript <T>(key: AssociatedOptionalObjectKey<T>, initialValue: (() -> T)?) -> T? {
-		get {
-			return self.getAssociatedObject(forKey: key, initialValue: initialValue)
-		}
-		set {
-			self.setAssociatedObject(newValue, forKey: key)
-		}
-	}
-	
-	public subscript <T>(key: AssociatedOptionalObjectKey<T>) -> T? {
-		get {
-			return self.getAssociatedObject(forKey: key, initialValue: nil)
-		}
-		set {
-			self.setAssociatedObject(newValue, forKey: key)
-		}
-	}
-
-
-	/// Removes all associations for a given object.
-	public func removeAllAssociatedObjects() {
-		objc_removeAssociatedObjects(self)
-	}
+    
+    public func getAssociatedObject<V>(for key: AssociatedObjectKey<V>,
+                                       initialValue: @escaping @autoclosure () -> V) -> V {
+        return AssociatedUtils.getAssociatedObject(for: key,
+                                                   of: self,
+                                                   initialValue: initialValue)
+    }
+    
+    public func getAssociatedObject<V: Any>(for key: AssociatedObjectKey<V>,
+                                            optionalValue: (() -> V?)? = nil) -> V? {
+        return AssociatedUtils.getAssociatedObject(for: key,
+                                                   of: self,
+                                                   optionalValue: optionalValue)
+    }
+    
+    public func setAssociatedObject<V>(_ value: V,
+                                       for key: AssociatedObjectKey<V>){
+        AssociatedUtils.setAssociatedObject(value,
+                                            for: key,
+                                            of: self)
+    }
+    public func setAssociatedObject<V>(_ value: V?,
+                                       for key: AssociatedObjectKey<V>){
+        AssociatedUtils.setAssociatedObject(value,
+                                            for: key,
+                                            of: self)
+    }
+    
+    /// Remove an associated valye for a given object
+    ///
+    /// - Parameter key: The key for the association
+    /// - Returns: The old value associated with the key `key` for the object.
+    @discardableResult
+    public func removeAssociatedObject<T>(for key: AssociatedObjectKey<T>) -> T? {
+        let value = self.getAssociatedObject(for: key)
+        self.setAssociatedObject(nil, for: key)
+        return value
+    }
+    
+    public subscript <T>(key: AssociatedObjectKey<T>, initialValue: @escaping @autoclosure () -> T) -> T {
+        get {
+            return self.getAssociatedObject(for: key, initialValue: initialValue)
+        }
+        set {
+            self.setAssociatedObject(newValue, for: key)
+        }
+    }
+    
+    public subscript <T>(key: AssociatedObjectKey<T>) -> T? {
+        get {
+            return self.getAssociatedObject(for: key, optionalValue: nil)
+        }
+        set {
+            self.setAssociatedObject(newValue, for: key)
+        }
+    }
+    
+    
+    /// Removes all associations for a given object.
+    public func removeAllAssociatedObjects() {
+        objc_removeAssociatedObjects(self)
+    }
 }
+
+
+//For cases where you might not be able to lock the type down to an
+// AssociatedObjectKey, such as an associated type in a protocol
+extension NSObject {
+    
+    public func getAssociatedObject<V>(for key: UnsafeRawPointer,
+                                       with policy: AssociatedObjectPolicy = .strong,
+                                       initialValue: @escaping @autoclosure () -> V) -> V {
+        return AssociatedUtils.getAssociatedObject(for: key,
+                                                   of: self,
+                                                   with: policy,
+                                                   initialValue: initialValue)
+    }
+    
+    public func getAssociatedObject<V>(for key: UnsafeRawPointer,
+                                       with policy: AssociatedObjectPolicy = .strong,
+                                       optionalValue: (() -> V?)? = nil) -> V? {
+        return AssociatedUtils.getAssociatedObject(for: key,
+                                                   of: self,
+                                                   with: policy,
+                                                   optionalValue: optionalValue)
+    }
+    
+    public func setAssociatedObject<V>(_ value: V,
+                                       for key: UnsafeRawPointer,
+                                       with policy: AssociatedObjectPolicy = .strong){
+        AssociatedUtils.setAssociatedObject(value,
+                                            for: key,
+                                            of: self,
+                                            with: policy)
+    }
+}
+
+public class AssociatedUtils{
+    
+    //MARK: Getters
+    public static func getAssociatedObject<V>(for key: AssociatedObjectKey<V>,
+                                              of host: Any,
+                                              with policy: AssociatedObjectPolicy = .strong,
+                                              initialValue: @escaping @autoclosure () -> V) -> V{
+        return AssociatedUtils.getAssociatedObject(for: key.value,
+                                                   of: host,
+                                                   with: policy,
+                                                   initialValue: initialValue)
+    }
+    
+    public static func getAssociatedObject<V>(for key: UnsafeRawPointer,
+                                              of host: Any,
+                                              with policy: AssociatedObjectPolicy = .strong,
+                                              initialValue: @escaping @autoclosure () -> V) -> V {
+        return getAssociatedObject(for: key,
+                                   of: host,
+                                   with: policy,
+                                   optionalValue: initialValue)!
+    }
+    
+    
+    public static func getAssociatedObject<V: Any>(for key: AssociatedObjectKey<V>,
+                                                   of host: Any,
+                                                   with policy: AssociatedObjectPolicy = .strong,
+                                                   optionalValue: (() -> V?)? = nil) -> V?{
+        return getAssociatedObject(for: key.value,
+                                   of: host,
+                                   with: key.policy,
+                                   optionalValue: optionalValue)
+        
+    }
+    public static func getAssociatedObject<V>(for key: UnsafeRawPointer,
+                                              of host: Any,
+                                              with policy: AssociatedObjectPolicy = .strong,
+                                              optionalValue: (() -> V?)? = nil) -> V? {
+        var value = objc_getAssociatedObject(host, key) as? V
+        if value == nil, let initial = optionalValue?() {
+            value = initial
+            objc_setAssociatedObject(host, key, value, policy.objc)
+        }
+        return value
+    }
+    
+    //MARK: Setters
+    
+    public static func setAssociatedObject<V>(_ value: V,
+                                              for key: AssociatedObjectKey<V>,
+                                              of host: Any) {
+        AssociatedUtils.setAssociatedObject(value,
+                                            for: key.value,
+                                            of: host,
+                                            with: key.policy)
+    }
+    
+    public static func setAssociatedObject<V>(_ value: V?,
+                                              for key: AssociatedObjectKey<V>,
+                                              of host: Any) {
+        AssociatedUtils.setAssociatedObject(value,
+                                            for: key.value,
+                                            of: host,
+                                            with: key.policy)
+    }
+    
+    
+    public static func setAssociatedObject<T: Any>(_ value: T,
+                                                   for key: UnsafeRawPointer,
+                                                   of host: Any,
+                                                   with policy: AssociatedObjectPolicy = .strong){
+        objc_setAssociatedObject(host, key, value, policy.objc)
+    }
+}
+
+

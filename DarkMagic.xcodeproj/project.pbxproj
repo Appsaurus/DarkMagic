@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9DBA830763D535C88DA6CB28 /* Pods_DarkMagic_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B87658C80F21DF8967D24BD6 /* Pods_DarkMagic_iOS.framework */; };
 		D284B0F61F79024300D94AF3 /* macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = D284B0F51F79024300D94AF3 /* macOS.swift */; };
 		D284B1051F79038B00D94AF3 /* DarkMagic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D284B0FC1F79038B00D94AF3 /* DarkMagic.framework */; };
 		D284B1231F79041C00D94AF3 /* tvOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = D284B1221F79041C00D94AF3 /* tvOS.swift */; };
@@ -66,6 +67,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		362537EA51DBD10C69D7CCB6 /* Pods-DarkMagic-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DarkMagic-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DarkMagic-iOS/Pods-DarkMagic-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		88CC5F40C81EBA531209FF62 /* Pods-DarkMagic-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DarkMagic-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-DarkMagic-iOS/Pods-DarkMagic-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		B87658C80F21DF8967D24BD6 /* Pods_DarkMagic_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DarkMagic_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D284B0F51F79024300D94AF3 /* macOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = macOS.swift; sourceTree = "<group>"; };
 		D284B0FC1F79038B00D94AF3 /* DarkMagic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DarkMagic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D284B1041F79038B00D94AF3 /* DarkMagic-tvOS-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DarkMagic-tvOS-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,6 +133,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DBA830763D535C88DA6CB28 /* Pods_DarkMagic_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,6 +163,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9596EA05C558F019EC46BCE4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B87658C80F21DF8967D24BD6 /* Pods_DarkMagic_iOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AE59EC13BEBB271809BCCD0E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				362537EA51DBD10C69D7CCB6 /* Pods-DarkMagic-iOS.debug.xcconfig */,
+				88CC5F40C81EBA531209FF62 /* Pods-DarkMagic-iOS.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		D284B0F41F79024300D94AF3 /* macOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -240,6 +262,8 @@
 				D5C629691C3A809D007F7B7C /* Sources */,
 				D5C6298F1C3A8BDA007F7B7C /* DarkMagicTests */,
 				D5B2E8A01C3A780C00C0327D /* Products */,
+				AE59EC13BEBB271809BCCD0E /* Pods */,
+				9596EA05C558F019EC46BCE4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -394,6 +418,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D5B2E8B31C3A780C00C0327D /* Build configuration list for PBXNativeTarget "DarkMagic-iOS" */;
 			buildPhases = (
+				1B34EB4FC1F4C1EB41983706 /* [CP] Check Pods Manifest.lock */,
 				D5B2E89A1C3A780C00C0327D /* Sources */,
 				D5B2E89B1C3A780C00C0327D /* Frameworks */,
 				D5B2E89C1C3A780C00C0327D /* Headers */,
@@ -581,6 +606,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1B34EB4FC1F4C1EB41983706 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DarkMagic-iOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D284B0F71F79038B00D94AF3 /* Sources */ = {
@@ -963,6 +1013,7 @@
 		};
 		D5B2E8B41C3A780C00C0327D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 362537EA51DBD10C69D7CCB6 /* Pods-DarkMagic-iOS.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -984,6 +1035,7 @@
 		};
 		D5B2E8B51C3A780C00C0327D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 88CC5F40C81EBA531209FF62 /* Pods-DarkMagic-iOS.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
