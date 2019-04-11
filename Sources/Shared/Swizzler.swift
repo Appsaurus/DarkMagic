@@ -32,7 +32,7 @@ public extension NSObject {
     ///   - swizzledSelector: The new selector to swizzle with
     ///   - methodType: `MethodType` case determining whether you want to swizzle an instance method (`.instance`) or a class method (`.class`)
     /// - Throws: `DarkMagicError.methodNotFound` if the selectors cannot be found on `self`
-    public static func swizzle(_ originalSelector: Selector, with swizzledSelector: Selector, methodType: MethodType = .instance) throws {
+    static func swizzle(_ originalSelector: Selector, with swizzledSelector: Selector, methodType: MethodType = .instance) throws {
         
         let cls: AnyClass = methodType == .instance ? self : object_getClass(self)!
         
@@ -64,7 +64,7 @@ public extension NSObject {
     ///   - block: The block to be called instead of the method's implementation
     ///   - methodType: `MethodType` case determining whether you want to replace an instance method (`.instance`) or a class method (`.class`)
     /// - Throws: `DarkMagicError.methodNotFound` if the method cannot be found
-    public static func replace(_ originalSelector: Selector, withBlock block: Any!, methodType: MethodType = .instance) throws {
+    static func replace(_ originalSelector: Selector, withBlock block: Any!, methodType: MethodType = .instance) throws {
         
         let cls: AnyClass = methodType == .instance ? self : object_getClass(self)!
         
@@ -73,7 +73,7 @@ public extension NSObject {
         }
         
         
-        let swizzledImplementation = imp_implementationWithBlock(block)
+        let swizzledImplementation = imp_implementationWithBlock(block as Any)
         
         method_setImplementation(originalMethod, swizzledImplementation)
         

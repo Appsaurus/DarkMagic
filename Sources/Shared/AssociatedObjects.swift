@@ -61,27 +61,27 @@ public class AssociatedObjectKey<V>: AssociatedObjectKeys{}
 
 public extension NSObject {
     
-    public func getAssociatedObject<V>(for key: AssociatedObjectKey<V>,
+    func getAssociatedObject<V>(for key: AssociatedObjectKey<V>,
                                        initialValue: @escaping @autoclosure () -> V) -> V {
         return AssociatedUtils.getAssociatedObject(for: key,
                                                    of: self,
-                                                   initialValue: initialValue)
+                                                   initialValue: initialValue())
     }
     
-    public func getAssociatedObject<V>(for key: AssociatedObjectKey<V>,
+    func getAssociatedObject<V>(for key: AssociatedObjectKey<V>,
                                        optionalValue: (() -> V?)? = nil) -> V? {
         return AssociatedUtils.getAssociatedObject(for: key,
                                                    of: self,
                                                    optionalValue: optionalValue)
     }
     
-    public func setAssociatedObject<V>(_ value: V,
+    func setAssociatedObject<V>(_ value: V,
                                        for key: AssociatedObjectKey<V>){
         AssociatedUtils.setAssociatedObject(value,
                                             for: key,
                                             of: self)
     }
-    public func setAssociatedObject<V>(_ value: V?,
+    func setAssociatedObject<V>(_ value: V?,
                                        for key: AssociatedObjectKey<V>){
         AssociatedUtils.setAssociatedObject(value,
                                             for: key,
@@ -93,22 +93,22 @@ public extension NSObject {
     /// - Parameter key: The key for the association
     /// - Returns: The old value associated with the key `key` for the object.
     @discardableResult
-    public func removeAssociatedObject<V>(for key: AssociatedObjectKey<V>) -> V? {
+    func removeAssociatedObject<V>(for key: AssociatedObjectKey<V>) -> V? {
         let value = self.getAssociatedObject(for: key)
         self.setAssociatedObject(nil, for: key)
         return value
     }
     
-    public subscript <V>(key: AssociatedObjectKey<V>, initialValue: @escaping @autoclosure () -> V) -> V {
+    subscript <V>(key: AssociatedObjectKey<V>, initialValue: @escaping @autoclosure () -> V) -> V {
         get {
-            return self.getAssociatedObject(for: key, initialValue: initialValue)
+            return self.getAssociatedObject(for: key, initialValue: initialValue())
         }
         set {
             self.setAssociatedObject(newValue, for: key)
         }
     }
     
-    public subscript <V>(key: AssociatedObjectKey<V>) -> V? {
+    subscript <V>(key: AssociatedObjectKey<V>) -> V? {
         get {
             return self.getAssociatedObject(for: key)
         }
@@ -117,7 +117,7 @@ public extension NSObject {
         }
     }
     
-    public subscript <V>(key: AssociatedObjectKey<V>, optionalValue: (() -> V?)?) -> V? {
+    subscript <V>(key: AssociatedObjectKey<V>, optionalValue: (() -> V?)?) -> V? {
         get {
             return self.getAssociatedObject(for: key, optionalValue: optionalValue)
         }
@@ -127,7 +127,7 @@ public extension NSObject {
     }
     
     /// Removes all associations for a given object.
-    public func removeAllAssociatedObjects() {
+    func removeAllAssociatedObjects() {
         objc_removeAssociatedObjects(self)
     }
 }
@@ -143,7 +143,7 @@ extension NSObject {
         return AssociatedUtils.getAssociatedObject(for: key,
                                                    of: self,
                                                    with: policy,
-                                                   initialValue: initialValue)
+                                                   initialValue: initialValue())
     }
     
     public func getAssociatedObject<V>(for key: UnsafeRawPointer,
@@ -175,7 +175,7 @@ public class AssociatedUtils{
         return AssociatedUtils.getAssociatedObject(for: key.value,
                                                    of: host,
                                                    with: policy,
-                                                   initialValue: initialValue)
+                                                   initialValue: initialValue())
     }
     
     public static func getAssociatedObject<V>(for key: UnsafeRawPointer,
