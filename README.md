@@ -13,9 +13,7 @@
 
 ## Usage
 
-```swift
-<API>
-```
+Coming soon.
 
 ## Installation
 
@@ -23,7 +21,7 @@
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'DarkMagic'
+pod 'DarkMagic', :git => 'https://github.com/Appsaurus/DarkMagic'
 ```
 
 **DarkMagic** is also available through [Carthage](https://github.com/Carthage/Carthage).
